@@ -2,7 +2,7 @@ const rock = document.getElementById("rock");
 const paper = document.getElementById("paper");
 const scissors = document.getElementById("scissors");
 const startBtn = document.getElementsByClassName('btn-reload');
-let played = true;
+let gameStatus = {}
 let list = [rock, paper, scissors]
 const randObj = {
     '1': rock,
@@ -18,7 +18,7 @@ function player(){
         delete randObj['1']
         paper.style.pointerEvents = "none";
         scissors.style.pointerEvents = "none";
-        played = true
+        gameStatus.played = true
     });
     paper.addEventListener('click', () =>{
         // paper.getElementsByTagName('img')[0].style["boxShadow"] = " 0px 3px 8px  blue";
@@ -27,7 +27,7 @@ function player(){
         delete randObj['2']
         scissors.style.pointerEvents = "none";
         rock.style.pointerEvents = "none"
-        played = true
+        gameStatus.played = true
     });
     scissors.addEventListener('click', () =>{
         // scissors.getElementsByTagName('img')[0].style["boxShadow"] = " 0px 3px 8px  blue";
@@ -36,10 +36,9 @@ function player(){
         delete randObj['3']
         rock.style.pointerEvents = "none"
         paper.style.pointerEvents = "none"
-        played = true
-        dinner = true
+        gameStatus.played = true
     });
-    return played
+    return gameStatus.played
 }
 function botPlayer(){
     
@@ -50,3 +49,4 @@ function botPlayer(){
 }
 // botPlayer()
 // player()
+// alert(gameStatus.played)
