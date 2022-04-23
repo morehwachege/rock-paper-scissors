@@ -2,7 +2,7 @@ const rock = document.getElementById("rock");
 const paper = document.getElementById("paper");
 const scissors = document.getElementById("scissors");
 const result =  document.querySelector(".result");
-const startBtn = document.getElementsByClassName('btn-reload');
+const restartBtn = document.querySelector('.btn-reload');
 let list = [rock, paper, scissors]
 let played = false
 const randObj = {
@@ -21,7 +21,6 @@ function player(){
         scissors.style.pointerEvents = "none";
     });
     paper.addEventListener('click', () =>{
-        // paper.getElementsByTagName('img')[0].style["boxShadow"] = " 0px 3px 8px  blue";
         paper.getElementsByTagName('img')[0].style["boxShadow"] = " 0px 3px 8px  blue";
         paper.style.pointerEvents = "none";
         delete randObj['2']
@@ -29,7 +28,6 @@ function player(){
         rock.style.pointerEvents = "none"
     });
     scissors.addEventListener('click', () =>{
-        // scissors.getElementsByTagName('img')[0].style["boxShadow"] = " 0px 3px 8px  blue";
         scissors.getElementsByTagName('img')[0].style["boxShadow"] = " 0px 3px 8px  blue";
         scissors.style.pointerEvents = "none";
         delete randObj['3']
@@ -51,15 +49,10 @@ function botPlayer(){
         botPlayer()
         // if player and bot have the same selection loop back
     }
-    // console.log(item)
     item.getElementsByTagName('img')[0].style["boxShadow"] = " 0px 3px 8px  #00FF00";
     item.style.pointerEvents = "none";          // make bot selection item unclickable/unchangeable
     return randomNumber
 }
-
-// function gamePlay(){
-//     if()
-// }
 
 player()
 list.forEach((element, playerSelection) => {
@@ -75,20 +68,42 @@ list.forEach((element, playerSelection) => {
                 console.log(playerSelection, " Human selection")
                 // game play section
 
-                if(playerSelection === 0 && botSelection === 2){
-                    result.innerText = "Paper Cover's rock and wins"
+                if(playerSelection == 0 && botSelection == 2){
+                    result.innerText = "Paper Cover's rock => Bot Wins"
+                    
                 }
-                if(playerSelection === 0 && botSelection === 3){
-                    result.innerText = "Rock crushes scissors and wins"
+                if(playerSelection == 0 && botSelection == 3){
+                    result.innerText = "Rock crushes scissors => You Win"
+                    result.style.color = "lime"
                 }
-                if(playerSelection === 1 && botSelection === 1){
-                    result.innerText = "Paper Cover's rock and wins"
+                // if(playerSelection === 0 && botSelection === 1){
+                //     result.innerText = "Paper Cover's rock => You Win"
+                //     result.style.color = "green"
+                // }
+                if(playerSelection == 1 && botSelection == 1){
+                    result.innerText = "Paper Cover's rock => You Win"
+                    result.style.color = "lime"
                 }
-                if(playerSelection === 2 && botSelection === 1){
-                    result.innerText = "Rock crushes scissors and wins"
+                if(playerSelection == 1 && botSelection == 3){
+                    result.innerText = "Scissors cut paper=> Bot Wins"
+                    
                 }
+                if(playerSelection == 2 && botSelection == 1){
+                    result.innerText = "Rock crushes scissors => Bot Wins"
+                    
+                }
+                if(playerSelection == 2 && botSelection == 2){
+                    result.innerText = "Scissors cut paper=> You Win"
+                    result.style.color = "lime"
+                    
+                }
+                
                 // how to find selected items
             }
         }
     }
 });
+
+restartBtn.addEventListener('click', ()=>{
+    window.location.reload();
+})
