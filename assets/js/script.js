@@ -11,8 +11,6 @@ const randObj = {
     '3': scissors,
 }
 function player(){
-    
-    // let player =
     rock.addEventListener('click', () =>{
         rock.getElementsByTagName('img')[0].style["boxShadow"] = " 0px 3px 8px  blue";
         rock.style.pointerEvents = "none";
@@ -40,13 +38,13 @@ function botPlayer(){
     const random = (min, max) => Math.floor(Math.random() * (max-min) + min);
     const randomNumber = random(1,4)    
     const item = randObj[randomNumber]
-    // console.log(randomNumber)
-    // console.log(randObj)
     if(randomNumber in randObj){
-        // console.log("Key found")
+        console.log("Key found")
     }
     else{
-        botPlayer()
+        // botPlayer()
+        result.innerText = "Draw"
+        console.log(randomNumber)        
         // if player and bot have the same selection loop back
     }
     item.getElementsByTagName('img')[0].style["boxShadow"] = " 0px 3px 8px  #00FF00";
@@ -76,10 +74,6 @@ list.forEach((element, playerSelection) => {
                     result.innerText = "Rock crushes scissors => You Win"
                     result.style.color = "lime"
                 }
-                // if(playerSelection === 0 && botSelection === 1){
-                //     result.innerText = "Paper Cover's rock => You Win"
-                //     result.style.color = "green"
-                // }
                 if(playerSelection == 1 && botSelection == 1){
                     result.innerText = "Paper Cover's rock => You Win"
                     result.style.color = "lime"

@@ -2,6 +2,20 @@
     margin: 0;
     padding: 0; 
 }
+.sidebar{
+    height: 100%;
+    width: 150px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding-top: 40px;
+    background-color: lightblue;
+}
+.sidebar div{
+    padding: 8px;
+    font-size: 22px;
+    display: block;
+}
 main.main{
     height: 100vh;
 }
@@ -18,6 +32,9 @@ main.main{
     height: 50%;
     
 
+}
+.text-center{
+    text-align: center;
 }
 .img img{
     width: 250px;
