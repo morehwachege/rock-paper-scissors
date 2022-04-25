@@ -10,29 +10,81 @@ const randObj = {
     '2': paper,
     '3': scissors,
 }
-function duoPlayer() {
-    rock.addEventListener('click', () => {
-        rock.getElementsByTagName('img')[0].style["boxShadow"] = " 0px 3px 8px  blue";
-        rock.style.pointerEvents = "none";
-        delete randObj['1']
-        paper.style.pointerEvents = "none";
-        scissors.style.pointerEvents = "none";
-    });
-    paper.addEventListener('click', () => {
-        paper.getElementsByTagName('img')[0].style["boxShadow"] = " 0px 3px 8px  blue";
-        paper.style.pointerEvents = "none";
-        delete randObj['2']
-        scissors.style.pointerEvents = "none";
-        rock.style.pointerEvents = "none"
-    });
-    scissors.addEventListener('click', () => {
-        scissors.getElementsByTagName('img')[0].style["boxShadow"] = " 0px 3px 8px  blue";
-        scissors.style.pointerEvents = "none";
-        delete randObj['3']
-        rock.style.pointerEvents = "none"
-        paper.style.pointerEvents = "none"
-    });
+
+
+class DuoPlayerGame {
+    constructor() {
+
+    }
+    duoPlayerOne() {
+        let rockClicked = false
+        let paperClicked = false
+        let scissorsClicked = false
+        rock.addEventListener('click', () => {
+            rock.getElementsByTagName('img')[0].style["boxShadow"] = " 0px 3px 8px  blue";
+            rock.style.pointerEvents = "none";
+            delete randObj['1']
+            paper.style.pointerEvents = "none";
+            scissors.style.pointerEvents = "none";
+            this.duoPlayerTwo()
+        });
+        paper.addEventListener('click', () => {
+            paper.getElementsByTagName('img')[0].style["boxShadow"] = " 0px 3px 8px  blue";
+            paper.style.pointerEvents = "none";
+            delete randObj['2']
+            scissors.style.pointerEvents = "none";
+            rock.style.pointerEvents = "none"
+            this.duoPlayerTwo()
+        });
+        scissors.addEventListener('click', () => {
+            scissors.getElementsByTagName('img')[0].style["boxShadow"] = " 0px 3px 8px  blue";
+            scissors.style.pointerEvents = "none";
+            delete randObj['3']
+            rock.style.pointerEvents = "none"
+            paper.style.pointerEvents = "none"
+            // console.log(randObj)
+            scissorsClicked = true
+            this.duoPlayerTwo()
+        });
+        // check clicked items 
+
+    }
+    duoPlayerTwo() {
+        // allow only two player inputs only
+        Object.keys(randObj).forEach(key => {
+            randObj[key].style.pointerEvents = "auto"
+            randObj[key].addEventListener("click", () => {
+
+                // console.log("clicked", randObj)
+                Object.keys(randObj).forEach(anotherKey => {
+                    randObj[anotherKey].style.pointerEvents = "none"
+                    // console.log(randObj[anotherKey] ===  rock)
+                    // this.play()
+                    if (randObj[anotherKey] === rock) {
+                        result.innerText = "Scissors Win"
+                        result.style.color = "lime"
+                    }
+                    if (randObj[anotherKey] === paper) {
+                        result.innerText = "Rock Wins"
+                        result.style.color = "lime"
+                    }
+                    if (randObj[anotherKey] === scissors) {
+                        result.innerText = "Paper Wins"
+                        result.style.color = "lime"
+                    }
+                    // return randObj[anotherKey]
+                });
+
+            })
+        })
+    }
+    // play(){
+    //     // console.log(this.duoPlayerTwo())
+    //     console.log(randObj[anotherKey] === rock)
+    // }
 }
+
+
 
 
 function player() {
@@ -77,62 +129,56 @@ function botPlayer() {
     return randomNumber
 }
 
-function singlePlayerGame(){
+function singlePlayerGame() {
     player()
-list.forEach((element, playerSelection) => {
-    element.onclick = () => {
-        if (element.getElementsByTagName('img')[0].style["boxShadow"] = " 0px 3px 8px  blue") {
-            played = true
-            if (played == true) {
-                console.log("Bot played")
-                // console.log(element)
-                let botSelection = botPlayer()
-                // console.log(randObj)
-                console.log(botSelection)
-                console.log(playerSelection, " Human selection")
-                // game play section
+    list.forEach((element, playerSelection) => {
+        element.onclick = () => {
+            if (element.getElementsByTagName('img')[0].style["boxShadow"] = " 0px 3px 8px  blue") {
+                played = true
+                if (played == true) {
+                    console.log("Bot played")
+                    // console.log(element)
+                    let botSelection = botPlayer()
+                    // console.log(randObj)
+                    console.log(botSelection)
+                    console.log(playerSelection, " Human selection")
+                    // game play section
 
-                if (playerSelection == 0 && botSelection == 2) {
-                    result.innerText = "Paper Cover's rock => Bot Wins"
+                    if (playerSelection == 0 && botSelection == 2) {
+                        result.innerText = "Paper Cover's rock => Bot Wins"
+                    }
+                    if (playerSelection == 0 && botSelection == 3) {
+                        result.innerText = "Rock crushes scissors => You Win"
+                        result.style.color = "lime"
+                    }
+                    if (playerSelection == 1 && botSelection == 1) {
+                        result.innerText = "Paper Cover's rock => You Win"
+                        result.style.color = "lime"
+                    }
+                    if (playerSelection == 1 && botSelection == 3) {
+                        result.innerText = "Scissors cut paper=> Bot Wins"
+                    }
+                    if (playerSelection == 2 && botSelection == 1) {
+                        result.innerText = "Rock crushes scissors => Bot Wins"
+                    }
+                    if (playerSelection == 2 && botSelection == 2) {
+                        result.innerText = "Scissors cut paper=> You Win"
+                        result.style.color = "lime"
+                    }
 
+                    // how to find selected items
                 }
-                if (playerSelection == 0 && botSelection == 3) {
-                    result.innerText = "Rock crushes scissors => You Win"
-                    result.style.color = "lime"
-                }
-                if (playerSelection == 1 && botSelection == 1) {
-                    result.innerText = "Paper Cover's rock => You Win"
-                    result.style.color = "lime"
-                }
-                if (playerSelection == 1 && botSelection == 3) {
-                    result.innerText = "Scissors cut paper=> Bot Wins"
-
-                }
-                if (playerSelection == 2 && botSelection == 1) {
-                    result.innerText = "Rock crushes scissors => Bot Wins"
-
-                }
-                if (playerSelection == 2 && botSelection == 2) {
-                    result.innerText = "Scissors cut paper=> You Win"
-                    result.style.color = "lime"
-
-                }
-
-                // how to find selected items
             }
         }
-    }
-});
+    });
 }
 
-// singlePlayerGame()
-function duoPlayerGame(){
-
-}
-
+let gamePlay = new DuoPlayerGame()
+gamePlay.duoPlayerOne()
+singlePlayerGame()
 
 
 restartBtn.addEventListener('click', () => {
     window.location.reload();
-    
+
 })

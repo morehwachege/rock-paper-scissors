@@ -56,6 +56,7 @@ main.main{
 .play{
     display: flex;
     justify-content: center;
+    margin-top: 10px;
 }
 .btn{
     height: 40px;
