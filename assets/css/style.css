@@ -74,3 +74,13 @@ main.main{
     transition: .2s ease-in;
     color: black;
 }
+#gameSelectBtn{
+    margin-left: 20px;
+    background-color: darkblue;
+    font-size: 16px;
+    color: white;
+}
+.player-link{
+    font-size: 22px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}

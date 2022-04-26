@@ -78,13 +78,7 @@ class DuoPlayerGame {
             })
         })
     }
-    // play(){
-    //     // console.log(this.duoPlayerTwo())
-    //     console.log(randObj[anotherKey] === rock)
-    // }
 }
-
-
 
 
 function player() {
@@ -137,9 +131,7 @@ function singlePlayerGame() {
                 played = true
                 if (played == true) {
                     console.log("Bot played")
-                    // console.log(element)
                     let botSelection = botPlayer()
-                    // console.log(randObj)
                     console.log(botSelection)
                     console.log(playerSelection, " Human selection")
                     // game play section
@@ -174,9 +166,8 @@ function singlePlayerGame() {
 }
 
 let gamePlay = new DuoPlayerGame()
-gamePlay.duoPlayerOne()
-singlePlayerGame()
 
+// singlePlayerGame()
 
 restartBtn.addEventListener('click', () => {
     window.location.reload();
